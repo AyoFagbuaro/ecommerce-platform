@@ -1,0 +1,64 @@
+name: Frontend and Backend CI
+
+on:
+  push:
+    branches:
+      - main
+#   pull_request:
+#     branches:
+#       - main
+
+jobs:
+  backend:
+    name: Api CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: |
+          cd api
+          npm install
+
+      - name: Run tests
+        run: |
+          cd api
+          npm test
+
+      - name: Build the backend
+        run: |
+          cd api
+          npm run build
+
+  frontend:
+    name: Webapp CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: |
+          cd webapp
+          npm install
+
+      - name: Run tests
+        run: |
+          cd webapp
+          npm test
+
+      - name: Build the frontend
+        run: |
+          cd webapp
+          npm run build
