@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-#   pull_request:
-#     branches:
-#       - main
 
 jobs:
   backend:
@@ -14,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -29,7 +26,7 @@ jobs:
       - name: Run tests
         run: |
           cd api
-          npm test          
+          npm run test          
 
       - name: Build the backend
         run: |
@@ -41,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -56,7 +53,7 @@ jobs:
       - name: Run tests
         run: |
           cd webapp
-          npm test
+          npm run test
         #   echo " Tests passed"
           
 
