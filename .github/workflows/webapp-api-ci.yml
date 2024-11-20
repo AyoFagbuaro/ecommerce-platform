@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 16
 
       - name: Install dependencies
         run: |
@@ -29,13 +29,12 @@ jobs:
       - name: Run tests
         run: |
           cd api
-          echo " Tests passed"
-        #   npm test
+          npm test          
 
       - name: Build the backend
         run: |
           cd api
-          npm run build
+          npm run build --if-present
 
   frontend:
     name: Webapp CI
@@ -47,7 +46,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 16
 
       - name: Install dependencies
         run: |
@@ -57,10 +56,11 @@ jobs:
       - name: Run tests
         run: |
           cd webapp
-          echo " Tests passed"
-        #   npm test
+          npm test
+        #   echo " Tests passed"
+          
 
       - name: Build the frontend
         run: |
           cd webapp
-          npm run build
+          npm run build --if-present
