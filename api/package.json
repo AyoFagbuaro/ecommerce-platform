@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test",
+    "test": "npm test",
     "build": "npm run build"
   },
   "keywords": [],
